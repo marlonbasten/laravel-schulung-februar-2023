@@ -30,3 +30,7 @@ Route::prefix('/kontakt')->name('contact.')->controller(ContactController::class
 });
 
 // Route::resource('/kontakt', ContactController::class)->only(['create','store']);
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

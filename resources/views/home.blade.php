@@ -1,15 +1,23 @@
-@extends('layouts.base')
-
-@section('title', 'Startseite')
+@extends('layouts.app')
 
 @section('content')
-    <p>Hallo Laravel!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-    <p>Name: {{ $name }}</p>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-    @if ($age >= 18)
-        <p>Glückwunsch, du darfst Bier trinken!</p>
-    @else
-        <p>Warte noch ein paar Jahre!</p>
-    @endif
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
