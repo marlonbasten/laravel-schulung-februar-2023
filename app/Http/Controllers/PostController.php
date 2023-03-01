@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Dtos\PostDTO;
+use App\Data\PostData;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Interfaces\PostServiceInterface;
 use App\Models\Post;
@@ -22,6 +22,9 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
+        $token = auth()->user()->createToken('Marlons Token');
+        dd($token);
+
 //        $post = Post::find(8);
 
 //        $post->categories()->syncWithoutDetaching([1, 2]);
@@ -50,7 +53,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         try {
-            $this->postService->store($request);
+            $this->postService->store(PostData::from(['user_id' => auth()->id(), ...$request->validated()]));
         } catch (QueryException $e) {
             return redirect()->back()->withError('Post konnte nicht erstellt werden!');
         }

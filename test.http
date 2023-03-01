@@ -1,0 +1,2 @@
+GET http://localhost/api/post
+Authorization: Bearer 1|8ufFcxWqOYj4h7guThMy6TeHjiuPCMqwa4saHAEl
