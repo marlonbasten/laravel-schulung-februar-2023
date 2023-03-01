@@ -18,3 +18,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vb
 POST http://localhost/api/auth/logout
 Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNjc3NjY3Nzg5LCJleHAiOjE2Nzc2NzEzODksIm5iZiI6MTY3NzY2Nzc4OSwianRpIjoiSDlqMEM4cGVTVlQzTEVURSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Sa-Qcbl-MKtROgR64sd6I5KTjRLMLTZrTqy2JcUK7k8
+
+###
+
+GET http://localhost/api/post
+Authorization: Bearer 1|8ufFcxWqOYj4h7guThMy6TeHjiuPCMqwa4saHAEl

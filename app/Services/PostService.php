@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Data\PostData;
+use App\Events\PostCreatedEvent;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Interfaces\PostServiceInterface;
 use App\Models\Post;
@@ -14,6 +15,8 @@ class PostService implements PostServiceInterface
     {
         $post = Post::create($data->except('categories')->toArray());
         $post->categories()->attach($data->categories);
+
+        event(new PostCreatedEvent($post));
 
         return $post;
     }

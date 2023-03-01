@@ -22,8 +22,11 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $token = auth()->user()->createToken('Marlons Token', ['v2']);
-        dd($token);
+        $posts = Post::where('created_at', '<', now()->subDay())->get();
+        foreach ($posts as $post) {
+            $post->categories()->sync([]);
+            $post->delete();
+        }
 
 //        $post = Post::find(8);
 
