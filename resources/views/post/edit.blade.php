@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Post erstellen</div>
+                    <div class="card-header">Post editieren</div>
 
                     <div class="card-body">
 
@@ -20,7 +20,7 @@
                             </div>
                         @endif
 
-                        @include('post.form', ['edit' => false])
+                        @include('post.form', ['edit' => true])
 
                     </div>
                 </div>

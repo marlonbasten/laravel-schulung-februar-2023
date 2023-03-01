@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Interfaces\PostServiceInterface;
+use App\Services\PostService;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Paginator::useBootstrapFive();
+        Model::preventLazyLoading(!App::isProduction());
+
+        $this->app->bind(PostServiceInterface::class, PostService::class);
     }
 }
