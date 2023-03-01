@@ -10,11 +10,11 @@ class CheckIsAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $name = auth()->user()?->name;
-
-        if ($name !== 'Marlon') {
-            abort(403);
-        }
+//        $name = auth()->user()?->name;
+//
+//        if ($name !== 'Marlon') {
+//            abort(403);
+//        }
 
         return $next($request);
     }

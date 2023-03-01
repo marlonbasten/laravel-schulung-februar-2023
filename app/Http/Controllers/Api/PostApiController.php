@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Blog\Facades\CacheHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
@@ -12,7 +13,7 @@ class PostApiController extends Controller
 {
     public function index()
     {
-        return \CacheHelper::handleCache('api.posts', function () {
+        return CacheHelper::handleCache('api.posts', function () {
             $posts = Post::with('user')->get();
             return PostResource::collection($posts);
         });

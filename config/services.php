@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'github' => [
+        'client_id' => 'b520b443b4668773a1d9',
+        'client_secret' => '8b2ce182e255510f26e7ed75a1326fbf11498066',
+        'redirect' => 'http://localhost/sso-callback',
+    ],
+
 ];

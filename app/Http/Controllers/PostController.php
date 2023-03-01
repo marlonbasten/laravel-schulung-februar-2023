@@ -22,7 +22,7 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $token = auth()->user()->createToken('Marlons Token');
+        $token = auth()->user()->createToken('Marlons Token', ['v2']);
         dd($token);
 
 //        $post = Post::find(8);
