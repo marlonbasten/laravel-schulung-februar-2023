@@ -51,10 +51,20 @@ return [
     */
 
     'channels' => [
+        'flare' => [
+            'driver' => 'flare',
+        ],
+
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'flare'],
             'ignore_exceptions' => false,
+        ],
+
+        'general' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/general.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
         ],
 
         'single' => [

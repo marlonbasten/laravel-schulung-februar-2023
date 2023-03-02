@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use Jumbojett\OpenIDConnectClient;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -43,6 +44,26 @@ Route::get('/login-github', function () {
     return Socialite::driver('github')->redirect();
 });
 
+Route::get('/login-oidc', function () {
+    // login with gitlab using openid connect
+    $oidc = new OpenIDConnectClient('https://gitlab.com');
+    $oidc->setClientID('8267c20483941ea4a3ec53c5f2c911690625f1e21e47c1dff50ca7852f5d5938');
+    $oidc->setClientSecret('53b6d66ee693ddb41f6ccef26db82f444efe185f7e634c03263d0d7bdb0b742d');
+    $oidc->setRedirectURL('http://localhost/oidc-webhook');
+    $oidc->addScope(['openid', 'profile', 'email']);
+    $oidc->authenticate();
+});
+
+Route::get('/oidc-webhook', function () {
+    $oidc = new OpenIDConnectClient(
+        'https://gitlab.com',
+        '8267c20483941ea4a3ec53c5f2c911690625f1e21e47c1dff50ca7852f5d5938',
+        '53b6d66ee693ddb41f6ccef26db82f444efe185f7e634c03263d0d7bdb0b742d'
+    );
+    $name = $oidc->token('nickname');
+
+});
+
 Route::get('/sso-callback', function () {
    $ssoUser = Socialite::driver('github')->user();
 
@@ -58,3 +79,8 @@ Route::get('/sso-callback', function () {
    auth()->login($user);
    return redirect()->route('home');
 });
+
+Route::get('/switch-language/{locale}', function (string $locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('switch-language');

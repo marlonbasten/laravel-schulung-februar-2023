@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in!', ['name' => auth()->user()->name]) }}
+
+                        <br>
+
+                    {{ transf('messages.welcome', ['name' => auth()->user()->name]) }}
+
+                        <br>
+
+                    {{ trans_choice('{0} There are none|[1,19] There are some|[20,*] There are many', 2) }}
                 </div>
             </div>
         </div>
