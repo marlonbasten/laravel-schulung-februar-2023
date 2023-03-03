@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 class LocaleHelper
 {
-    public function transf(string $key, array $replace = [], string $locale = null): string
+    public function trans(string $key, array $replace = [], string $locale = null): string
     {
         if (!Lang::has($key)) {
             Log::error('Missing translation for key: ' . $key);

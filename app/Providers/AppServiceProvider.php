@@ -29,8 +29,5 @@ class AppServiceProvider extends ServiceProvider
         Model::preventLazyLoading(!App::isProduction());
 
         $this->app->bind(PostServiceInterface::class, PostService::class);
-        $this->app->bind(CacheHelper::NAME, function () { // Registriert singleton im app container
-            return new CacheHelper();
-        });
     }
 }

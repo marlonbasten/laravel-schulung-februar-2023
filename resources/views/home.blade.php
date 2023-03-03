@@ -14,6 +14,8 @@
                         </div>
                     @endif
 
+                    @include('blog-helpers::test')
+
                     {{ __('You are logged in!', ['name' => auth()->user()->name]) }}
 
                         <br>
